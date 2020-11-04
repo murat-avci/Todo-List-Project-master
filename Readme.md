@@ -46,5 +46,5 @@ git clone SSH-адрес_вашего_форка
 
 <a href="#"><img align="left" width="50" height="50" alt="" src=""></a>
 
-[travis-image]: https://travis-ci.com/Todo-List-Project.svg?branch=master
-[travis-url]: https://travis-ci.com/Todo-List-Project
+[travis-image]: https://travis-ci.com/htmlacademy-javascript/1459569-keksobooking-21.svg?branch=master
+[travis-url]: https://travis-ci.com/htmlacademy-javascript/1459569-keksobooking-21
