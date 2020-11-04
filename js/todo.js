@@ -5,7 +5,7 @@ const todoInput = form.querySelector(`#todo`);
 const todoList = document.querySelector(`.list-group`);
 const cardBodies = document.querySelectorAll(`.card-body`);
 const firstCardBody = cardBodies[0];
-// const secondCardBody = cardBodies[1];
+const secondCardBody = cardBodies[1];
 // const filter = document.querySelector(`#filter`);
 // const clearButton = secondCardBody.querySelector(`#clear-todos`);
 
@@ -14,6 +14,16 @@ eventListeners();
 function eventListeners() {
   form.addEventListener(`submit`, addTodo);
   document.addEventListener(`DOMContentLoaded`, loadAllTodosToUI);
+  secondCardBody.addEventListener(`click`, deleteTodo);
+}
+
+function deleteTodo(e) {
+
+  if (e.target.className === `fa fa-remove`) {
+    e.target.parentElement.parentElement.remove();
+    showAlert(`success`, `Todo başarı ile silinmiştir!`);
+  }
+
 }
 
 function loadAllTodosToUI() {
