@@ -44,7 +44,7 @@ git clone SSH-адрес_вашего_форка
 
 ---
 
-<a href="#"><img align="left" width="50" height="50" alt="HTML Academy" src=""></a>
+<a href="#"><img align="left" width="50" height="50" alt="" src=""></a>
 
 [travis-image]: https://travis-ci.com/Todo-List-Project.svg?branch=master
 [travis-url]: https://travis-ci.com/Todo-List-Project
