@@ -7,7 +7,7 @@ const cardBodies = document.querySelectorAll(`.card-body`);
 const firstCardBody = cardBodies[0];
 const secondCardBody = cardBodies[1];
 const filter = document.querySelector(`#filter`);
-// const clearButton = secondCardBody.querySelector(`#clear-todos`);
+const clearButton = secondCardBody.querySelector(`#clear-todos`);
 
 eventListeners();
 
@@ -16,6 +16,19 @@ function eventListeners() {
   document.addEventListener(`DOMContentLoaded`, loadAllTodosToUI);
   secondCardBody.addEventListener(`click`, deleteTodo);
   filter.addEventListener(`keyup`, filterTodos);
+  clearButton.addEventListener(`click`, clearAllTodos);
+}
+
+function clearAllTodos() {
+  // eslint-disable-next-line no-alert
+  if (confirm(`Are you sure want to delete all?`)) {
+  // Arayüzden todoları temizleme
+    while (todoList.firstElementChild !== null) {
+      todoList.removeChild(todoList.firstElementChild);
+    }
+
+    localStorage.removeItem(`todos`);
+  }
 }
 
 function filterTodos(e) {
@@ -29,7 +42,6 @@ function filterTodos(e) {
       listItem.setAttribute(`style`, `display: none !important`); // bootstrap d-flex classını gölgelemek için kullanılmıştır.
     } else {
       listItem.setAttribute(`style`, `display: block`);
-
     }
   });
 }
@@ -42,7 +54,6 @@ function deleteTodo(e) {
 
     showAlert(`success`, `Todo has been successfully deleted!`);
   }
-
 }
 
 function deleteTodoFromStorage(delTodo) {
@@ -70,9 +81,11 @@ function addTodo(e) {
   if (newTodo === ``) {
     showAlert(`danger`, `Please enter a Todo!`);
   } else {
+
     addTodoToUI(newTodo);
     addTodoToStorage(newTodo);
     showAlert(`success`, `Todo has been successfully added.`);
+
   }
 
   todoInput.value = ``;
@@ -112,7 +125,7 @@ function showAlert(type, message) {
 
   setTimeout(function () {
     alert.remove();
-  }, 2000);
+  }, 1000);
 }
 
 function addTodoToUI(newTodo) {
@@ -128,6 +141,7 @@ function addTodoToUI(newTodo) {
 
   // Text Node Ekleme
   const text = document.createTextNode(newTodo);
+
   listItem.appendChild(text);
   listItem.appendChild(link);
 
