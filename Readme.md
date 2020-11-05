@@ -1,4 +1,4 @@
-# Experimental Project «Todo-List-Project» [![Build status][travis-image]][travis-url]
+# Sample Project «Todo-List-Project» [![Build status][travis-image]][travis-url]
 
 * Студент: [Мурат Авджы].
 * Наставник: `Неизвестно`.

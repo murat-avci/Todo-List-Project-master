@@ -6,7 +6,7 @@ const todoList = document.querySelector(`.list-group`);
 const cardBodies = document.querySelectorAll(`.card-body`);
 const firstCardBody = cardBodies[0];
 const secondCardBody = cardBodies[1];
-// const filter = document.querySelector(`#filter`);
+const filter = document.querySelector(`#filter`);
 // const clearButton = secondCardBody.querySelector(`#clear-todos`);
 
 eventListeners();
@@ -15,6 +15,23 @@ function eventListeners() {
   form.addEventListener(`submit`, addTodo);
   document.addEventListener(`DOMContentLoaded`, loadAllTodosToUI);
   secondCardBody.addEventListener(`click`, deleteTodo);
+  filter.addEventListener(`keyup`, filterTodos);
+}
+
+function filterTodos(e) {
+  const filterValue = e.target.value.toLowerCase();
+  const listItems = document.querySelectorAll(`.list-group-item`);
+
+  listItems.forEach(function (listItem) {
+    const listItemText = listItem.textContent.toLocaleLowerCase();
+
+    if (listItemText.indexOf(filterValue) === -1) {
+      listItem.setAttribute(`style`, `display: none !important`); // bootstrap d-flex classını gölgelemek için kullanılmıştır.
+    } else {
+      listItem.setAttribute(`style`, `display: block`);
+
+    }
+  });
 }
 
 function deleteTodo(e) {
@@ -23,7 +40,7 @@ function deleteTodo(e) {
     e.target.parentElement.parentElement.remove();
     deleteTodoFromStorage(e.target.parentElement.parentElement.textContent);
 
-    showAlert(`success`, `Todo başarı ile silinmiştir!`);
+    showAlert(`success`, `Todo has been successfully deleted!`);
   }
 
 }
@@ -51,11 +68,11 @@ function addTodo(e) {
   const newTodo = todoInput.value.trim();
 
   if (newTodo === ``) {
-    showAlert(`danger`, `Lütfen bir Todo giriniz!`);
+    showAlert(`danger`, `Please enter a Todo!`);
   } else {
     addTodoToUI(newTodo);
     addTodoToStorage(newTodo);
-    showAlert(`success`, `Todo başarı ile eklenmiştir.`);
+    showAlert(`success`, `Todo has been successfully added.`);
   }
 
   todoInput.value = ``;
